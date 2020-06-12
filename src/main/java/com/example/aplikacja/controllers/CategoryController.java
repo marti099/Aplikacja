@@ -50,10 +50,12 @@ public class CategoryController {
     @PostMapping("category")
     public String saveOrUpdate(@ModelAttribute CategoryCommand command){
 
+        //tutaj ogarnij sobie komendę, która będzie łączyć się z klasą ReaderCommand :v
+        //popraw to sobie sama, dasz radę
         Optional<Category> categoryOptional = categoryRepository.getCategoryByName(command.getName());
 
         if (!categoryOptional.isPresent()) {
-            Category detachedCategory = categoryCommandToCategoryconvert(command);
+            Category detachedCategory = categoryCommandToCategory.convert(command);
             Category savedCategory = categoryRepository.save(detachedCategory);
             return "redirect:/category/" + savedCategory.getId() + "/show";
         } else {

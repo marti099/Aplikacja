@@ -48,7 +48,8 @@ public class ReaderController {
         Optional<Reader> readerOptional = readerRepository.getReaderByName(command.getName());
 
         if (!readerOptional.isPresent()) {
-            Reader detachedReader = readerCommandToReaderconvert(command);
+            //tutaj wgl nie miałaś importu, dodałem już go, poza tym ważne jest to, czy piszesz z dużej czy małej litery
+            Reader detachedReader = com.example.aplikacja.converters.ReaderCommandToReader.convert(command);
             Reader savedReader = readerRepository.save(detachedReader);
             return "redirect:/reader/" + savedReader.getId() + "/show";
         } else {

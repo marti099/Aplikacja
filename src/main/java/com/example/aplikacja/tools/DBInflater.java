@@ -35,6 +35,11 @@ public class DBInflater implements ApplicationListener<ContextRefreshedEvent> {
         Books theNotebook = new Books("The Notebook");
         Category romanticNovels = new Category ("Romantic Novels");
         Reader martaSkupien= new Reader( "Marta Skupień");
+
+        //getBooks nie jest zdefiniowane
+        //powinno być zdefiniowane src/main/java/com/example/aplikacja/controllers/<nazwaKontrolera>Controller.java
+        //tam adnotacja z @RequestMapping("books")
+        
         nicholas_sparks.getBooks().add(theNotebook);
         theNotebook.getAuthor().add(nicholas_sparks);
         authorRepository.save(nicholas_sparks);
@@ -54,7 +59,7 @@ public class DBInflater implements ApplicationListener<ContextRefreshedEvent> {
         readerRepository.save(annaKowalska);
 
         Author j_k__rowling = new Author ("Joanne", "Murray", "J.K. Rowling");
-        Books harry_potter = new Books("Harry Potter");
+        Books harry_potter = new com.example.aplikacja.model.Books("Harry Potter");
         Category fantasy = new Category ("Fantasy");
         Reader janNowak = new Reader( "Jan Nowak");
         j_k__rowling.getBooks().add(harry_potter);
