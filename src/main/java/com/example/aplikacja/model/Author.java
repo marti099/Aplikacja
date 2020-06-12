@@ -1,12 +1,8 @@
 package com.example.aplikacja.model;
 
-
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToMany;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +10,7 @@ import java.util.Set;
 @EqualsAndHashCode(of = {"id"})
 @Entity
 public class Author {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,8 +18,8 @@ public class Author {
     private String lastName;
     private String nick;
 
-    @ManyToMany(mappedBy = "author")
-    private Set<Author> authors= new HashSet<>();
+    @ManyToMany(mappedBy = "authors")
+    private Set<Author> authors = new HashSet<>();
 
     public Author(){
     }
@@ -30,6 +27,5 @@ public class Author {
         this.firstName = firstName;
         this.lastName = lastName;
         this.nick = nick;
-        this.authors = authors;
     }
 }

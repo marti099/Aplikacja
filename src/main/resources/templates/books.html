@@ -18,11 +18,11 @@
         <th>Year</th>
         <th>Publisher</th>
     </tr>
-    <tr th:each="books : ${books}">
-        <td th:text="${books.id}"></td>
-        <td th:text="${books.title}"></td>
-        <td th:text="${books.year}"></td>
-        <td th:text="${books.publisher}"></td>
+    <tr th:each="book : ${book}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.year}"></td>
+        <td th:text="${book.publisher}"></td>
     </tr>
 </table>
 </body>

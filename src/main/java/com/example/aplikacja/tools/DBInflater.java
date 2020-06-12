@@ -1,28 +1,27 @@
 package com.example.aplikacja.tools;
 
 import com.example.aplikacja.model.Author;
-import com.example.aplikacja.model.Books;
 import com.example.aplikacja.model.Category;
 import com.example.aplikacja.model.Reader;
+import com.example.aplikacja.model.Book;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import com.example.aplikacja.repositories.AuthorRepository;
-import com.example.aplikacja.repositories.BooksRepository;
 import com.example.aplikacja.repositories.CategoryRepository;
 import com.example.aplikacja.repositories.ReaderRepository;
 
 
 @Component
 public class DBInflater implements ApplicationListener<ContextRefreshedEvent> {
-    public DBInflater (AuthorRepository authorRepository, BooksRepository booksRepository, CategoryRepository categoryRepository, ReaderRepository readerRepository) {
+    public DBInflater (AuthorRepository authorRepository, com.example.aplikacja.repositories.BookRepository bookRepository, CategoryRepository categoryRepository, ReaderRepository readerRepository) {
         this.authorRepository = authorRepository;
-        this.booksRepository = booksRepository;
+        this.bookRepository = bookRepository;
         this.categoryRepository = categoryRepository;
         this.readerRepository = readerRepository;
     }
     private AuthorRepository authorRepository;
-    private BooksRepository booksRepository;
+    private com.example.aplikacja.repositories.BookRepository bookRepository;
     private CategoryRepository categoryRepository;
     private ReaderRepository readerRepository;
 
@@ -31,41 +30,41 @@ public class DBInflater implements ApplicationListener<ContextRefreshedEvent> {
         initData();
     }
     private void initData() {
-        Author nicholas_sparks = new Author ("Nicholas Charles", "Sparks", "Nicholas Sparks");
-        Books theNotebook = new Books("The Notebook");
-        Category romanticNovels = new Category ("Romantic Novels");
-        Reader martaSkupien= new Reader( "Marta Skupień");
+        com.example.aplikacja.model.Author nicholas_sparks = new com.example.aplikacja.model.Author ("Nicholas Charles", "Sparks", "Nicholas Sparks");
+        com.example.aplikacja.model.Book theNotebook = new com.example.aplikacja.model.Book("The Notebook");
+        com.example.aplikacja.model.Category romanticNovels = new com.example.aplikacja.model.Category ("Romantic Novels");
+        com.example.aplikacja.model.Reader martaSkupien= new com.example.aplikacja.model.Reader( "Marta Skupień");
 
         //getBooks nie jest zdefiniowane
         //powinno być zdefiniowane src/main/java/com/example/aplikacja/controllers/<nazwaKontrolera>Controller.java
         //tam adnotacja z @RequestMapping("books")
         
         nicholas_sparks.getBooks().add(theNotebook);
-        theNotebook.getAuthor().add(nicholas_sparks);
+        theNotebook.getAuthors().add(nicholas_sparks);
         authorRepository.save(nicholas_sparks);
-        booksRepository.save(theNotebook);
+        bookRepository.save(theNotebook);
         categoryRepository.save(romanticNovels);
         readerRepository.save(martaSkupien);
 
-        Author colleen_hoover = new Author ("Margaret Colleen", "Fennell", "Colleen Hoover");
-        Books hopeless = new Books("Hopeless");
-        Category youthNovels = new Category ("Youth Novels");
-        Reader annaKowalska= new Reader( "Anna Kowalska");
+        com.example.aplikacja.model.Author colleen_hoover = new com.example.aplikacja.model.Author ("Margaret Colleen", "Fennell", "Colleen Hoover");
+        com.example.aplikacja.model.Book hopeless = new com.example.aplikacja.model.Book("Hopeless");
+        com.example.aplikacja.model.Category youthNovels = new com.example.aplikacja.model.Category ("Youth Novels");
+        com.example.aplikacja.model.Reader annaKowalska= new com.example.aplikacja.model.Reader( "Anna Kowalska");
         colleen_hoover.getBooks().add(hopeless);
-        hopeless.getAuthor().add(colleen_hoover);
+        hopeless.getAuthors().add(colleen_hoover);
         authorRepository.save(colleen_hoover);
-        booksRepository.save(hopeless);
+        bookRepository.save(hopeless);
         categoryRepository.save(youthNovels);
         readerRepository.save(annaKowalska);
 
-        Author j_k__rowling = new Author ("Joanne", "Murray", "J.K. Rowling");
-        Books harry_potter = new com.example.aplikacja.model.Books("Harry Potter");
-        Category fantasy = new Category ("Fantasy");
-        Reader janNowak = new Reader( "Jan Nowak");
+        com.example.aplikacja.model.Author j_k__rowling = new com.example.aplikacja.model.Author ("Joanne", "Murray", "J.K. Rowling");
+        com.example.aplikacja.model.Book harry_potter = new com.example.aplikacja.model.Book("Harry Potter");
+        com.example.aplikacja.model.Category fantasy = new com.example.aplikacja.model.Category ("Fantasy");
+        com.example.aplikacja.model.Reader janNowak = new com.example.aplikacja.model.Reader( "Jan Nowak");
         j_k__rowling.getBooks().add(harry_potter);
-        harry_potter.getAuthor().add(j_k__rowling);
+        harry_potter.getAuthors().add(j_k__rowling);
         authorRepository.save(j_k__rowling);
-        booksRepository.save(harry_potter);
+        bookRepository.save(harry_potter);
         categoryRepository.save(fantasy);
         readerRepository.save(janNowak);
 

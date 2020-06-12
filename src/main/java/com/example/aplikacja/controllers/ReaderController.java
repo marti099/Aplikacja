@@ -42,10 +42,12 @@ public class ReaderController {
         return "reader/addedit";
     }
 
+    /*
+
     @PostMapping("reader")
     public String saveOrUpdate(@ModelAttribute ReaderCommand command){
 
-        Optional<Reader> readerOptional = readerRepository.getReaderByName(command.getName());
+        Optional<Reader> readerOptional = readerRepository.getReaderByName(command.());
 
         if (!readerOptional.isPresent()) {
             //tutaj wgl nie miałaś importu, dodałem już go, poza tym ważne jest to, czy piszesz z dużej czy małej litery
@@ -58,4 +60,5 @@ public class ReaderController {
             return "redirect:/reader/" + readerOptional.get().getId() + "/show";
         }
     }
+    */
 }

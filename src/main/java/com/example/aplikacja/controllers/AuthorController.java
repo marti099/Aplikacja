@@ -3,12 +3,10 @@ package com.example.aplikacja.controllers;
 import com.example.aplikacja.commands.AuthorCommand;
 import com.example.aplikacja.converters.AuthorCommandToAuthor;
 import com.example.aplikacja.model.Author;
-import com.example.aplikacja.repositories.BooksRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.aplikacja.repositories.AuthorRepository;
-import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -16,12 +14,12 @@ import java.util.Optional;
 @Controller
 public class AuthorController {
     private AuthorRepository authorRepository;
-    private BooksRepository booksRepository;
+    private com.example.aplikacja.repositories.BookRepository bookRepository;
     private AuthorCommandToAuthor authorCommandToAuthor;
 
-    public AuthorController(AuthorRepository authorRepository, BooksRepository booksRepository) {
+    public AuthorController(AuthorRepository authorRepository, com.example.aplikacja.repositories.BookRepository bookRepository) {
         this.authorRepository = authorRepository;
-        this.booksRepository = booksRepository;
+        this.bookRepository = bookRepository;
     }
 
     @RequestMapping(value = {"/author", "/author/list"})
@@ -35,7 +33,7 @@ public class AuthorController {
         Optional<Author> author = authorRepository.findById(id);
 
         if (author.isPresent()) {
-            model.addAttribute("books", booksRepository.getAllByAuthorsIsContaining(author.get()));
+            model.addAttribute("books", bookRepository.getAllByAuthorsIsContaining(author.get()));
             model.addAttribute("filter", "author: " + author.get().getFirstName() + " " + author.get().getLastName());
         } else {
             model.addAttribute("songs", new ArrayList<>());

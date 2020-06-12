@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BooksCommand {
+public class BookCommand {
     private Long id;
     private String title;
     private String year;

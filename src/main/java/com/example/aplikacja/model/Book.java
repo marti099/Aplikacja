@@ -13,7 +13,7 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(of = {"id"})
 @Entity
-public class Books {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,11 +21,11 @@ public class Books {
     private String year;
     private String publisher;
     @ManyToMany(mappedBy = "books")
-    private Set<Books> books = new HashSet<>();
+    private Set<Book> books = new HashSet<>();
 
-    public Books (){
+    public Book(){
     }
-    public Books(String title) {
+    public Book(String title) {
         this.title = title;
         this.year = year;
         this.publisher = publisher;
