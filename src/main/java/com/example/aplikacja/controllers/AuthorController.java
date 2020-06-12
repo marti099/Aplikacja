@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.aplikacja.repositories.AuthorRepository;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Optional;

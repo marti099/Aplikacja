@@ -1,7 +1,6 @@
 package com.example.aplikacja.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;

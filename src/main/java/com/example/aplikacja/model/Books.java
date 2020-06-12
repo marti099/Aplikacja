@@ -1,8 +1,7 @@
 package com.example.aplikacja.model;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
