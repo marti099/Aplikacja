@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import com.example.aplikacja.repositories.BooksRepository;
 
 @Controller
-public class BooksController {
+public class BookController {
 
     private BooksRepository booksRepository;
     private BooksCommandToBooks booksCommandToBooks;
     private CategoryRepository categoryRepository;
     private AuthorRepository authorRepository;
 
-    public BooksController(BooksRepository booksRepository, BooksCommandToBooks booksCommandToBooks, CategoryRepository categoryRepository, AuthorRepository authorRepository) {
+    public BookController(BooksRepository booksRepository, BooksCommandToBooks booksCommandToBooks, CategoryRepository categoryRepository, AuthorRepository authorRepository) {
         this.booksRepository = booksRepository;
         this.booksCommandToBooks = booksCommandToBooks;
         this.categoryRepository = categoryRepository;
